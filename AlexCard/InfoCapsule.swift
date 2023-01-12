@@ -8,13 +8,35 @@
 import SwiftUI
 
 struct InfoCapsule: View {
+    
+    let firstImageName: String
+    let secondImageName: String?
+    let text: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Capsule()
+            .frame(height: 40)
+            .foregroundColor(.white)
+            .overlay(
+                HStack {
+                    Image(systemName: firstImageName)
+                        .foregroundColor(.blue)
+                    if let secondImageName {
+                        Image(systemName: secondImageName)
+                            .foregroundColor(.green)
+                    }
+                    Text(text)
+                        .foregroundColor(.black)
+                }
+            )
     }
 }
 
 struct InfoCapsule_Previews: PreviewProvider {
     static var previews: some View {
-        InfoCapsule()
+        InfoCapsule(
+            firstImageName: "phone.bubble.left",
+            secondImageName: nil,
+            text: "Hello")
     }
 }
